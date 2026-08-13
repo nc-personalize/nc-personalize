@@ -971,7 +971,16 @@ function finalizarPedido() {
   }
 
   let nome =
-    document.getElementById("nome").value;
+    document.getElementById("nome").value.trim();
+
+  let cep =
+    document.getElementById("cep").value.trim();
+
+  let endereco =
+    document.getElementById("endereco").value.trim();
+
+  let cidade =
+    document.getElementById("cidade").value.trim();
 
   if (!nome) {
 
@@ -979,14 +988,110 @@ function finalizarPedido() {
       "Digite seu nome para continuar."
     );
 
+    document.getElementById("nome").focus();
+
+    return;
+  }
+
+  if (!cep) {
+
+    alert(
+      "Digite seu CEP para continuar."
+    );
+
+    document.getElementById("cep").focus();
+
+    return;
+  }
+
+  if (!endereco) {
+
+    alert(
+      "Digite seu endereço para continuar."
+    );
+
+    document.getElementById("endereco").focus();
+
+    return;
+  }
+
+  if (!cidade) {
+
+    alert(
+      "Digite sua cidade para continuar."
+    );
+
+    document.getElementById("cidade").focus();
+
+    return;
+  }
+
+  let resumo =
+    "💕 RESUMO DO PEDIDO — NC PERSONALIZE 💕\n\n";
+
+  resumo +=
+    "Cliente: " + nome + "\n";
+
+  resumo +=
+    "CEP: " + cep + "\n";
+
+  resumo +=
+    "Endereço: " + endereco + "\n";
+
+  resumo +=
+    "Cidade: " + cidade + "\n\n";
+
+  resumo +=
+    "PRODUTOS:\n";
+
+  let total = 0;
+
+  carrinho.forEach(function(item) {
+
+    let subtotal =
+      item.preco * item.quantidade;
+
+    total += subtotal;
+
+    resumo +=
+      "\n• " +
+      item.produto +
+      " — " +
+      item.tamanho +
+      "\n";
+
+    resumo +=
+      "  Quantidade: " +
+      item.quantidade +
+      "\n";
+
+    resumo +=
+      "  Subtotal: R$ " +
+      subtotal
+        .toFixed(2)
+        .replace(".", ",") +
+      "\n";
+
+  });
+
+  resumo +=
+    "\n💰 TOTAL: R$ " +
+    total
+      .toFixed(2)
+      .replace(".", ",");
+
+  let confirmar =
+    confirm(resumo + "\n\nConfirmar pedido?");
+
+  if (!confirmar) {
+
     return;
   }
 
   alert(
-    "Pedido preparado com sucesso! 💕\n\n" +
-    "Na próxima etapa vamos conectar " +
-    "a finalização do pedido ao sistema " +
-    "real de recebimento."
+    "Pedido confirmado! 💕\n\n" +
+    "Seu pedido foi registrado " +
+    "com sucesso."
   );
 
 }
