@@ -366,43 +366,66 @@ footer {
 </div>
 
 
-    <!-- BOTTON CHAVEIRO -->
+   <!-- BOTTON CHAVEIRO -->
 
-    <div class="produto">
+<div class="produto">
 
-      <div class="produto-imagem">
-        🔗
-      </div>
+  <div class="produto-imagem">
+    🔗
+  </div>
 
-      <h3>Botton Chaveiro</h3>
+  <h3>Botton Chaveiro</h3>
 
-      <p>
-        Personalizado com sua imagem.
-      </p>
+  <p>
+    Personalizado com sua imagem.
+  </p>
 
-      <select id="chaveiro">
-        <option value="7">
-          32mm — R$ 7,00
-        </option>
+  <select id="chaveiro" onchange="calcularChaveiro()">
 
-        <option value="10">
-          58mm — R$ 10,00
-        </option>
-      </select>
+    <option value="32">
+      32mm — R$ 7,00
+    </option>
 
-      <input
-        type="number"
-        id="qtdChaveiro"
-        value="1"
-        min="1"
-        placeholder="Quantidade"
-      >
+    <option value="58">
+      58mm — R$ 10,00
+    </option>
 
-      <button
-        class="botao"
-        onclick="adicionarChaveiro()">
-        Adicionar ao carrinho
-      </button>
+  </select>
+
+  <input
+    type="number"
+    id="qtdChaveiro"
+    value="1"
+    min="1"
+    placeholder="Quantidade"
+    oninput="calcularChaveiro()"
+  >
+
+  <div
+    id="precoChaveiro"
+    class="preco">
+
+    R$ 7,00 por unidade
+
+  </div>
+
+  <p style="font-size:13px; line-height:1.5;">
+
+    Kit com 4 unidades disponível<br>
+    Acima de 10 unidades — preço especial<br>
+    Acima de 50 unidades — preço especial
+
+  </p>
+
+  <button
+    class="botao"
+    onclick="adicionarChaveiro()">
+
+    Adicionar ao carrinho
+
+  </button>
+
+</div>
 
     </div>
 
@@ -702,20 +725,99 @@ function adicionarIma() {
   );
 }
 
-function adicionarChaveiro() {
+function calcularChaveiro() {
 
-  let select = document.getElementById("chaveiro");
+  let tamanho =
+    document.getElementById("chaveiro").value;
 
   let quantidade =
     parseInt(
       document.getElementById("qtdChaveiro").value
-    );
+    ) || 1;
+
+  let preco;
+  let texto;
+
+  if (tamanho == "32") {
+
+    if (quantidade == 4) {
+      preco = 27.50 / 4;
+      texto = "Kit com 4 unidades — R$ 27,50";
+    } else if (quantidade > 50) {
+      preco = 6.00;
+      texto = "R$ 6,00 por unidade";
+    } else if (quantidade > 10) {
+      preco = 6.50;
+      texto = "R$ 6,50 por unidade";
+    } else {
+      preco = 7.00;
+      texto = "R$ 7,00 por unidade";
+    }
+
+  } else {
+
+    if (quantidade == 4) {
+      preco = 39.50 / 4;
+      texto = "Kit com 4 unidades — R$ 39,50";
+    } else if (quantidade > 50) {
+      preco = 9.00;
+      texto = "R$ 9,00 por unidade";
+    } else if (quantidade > 10) {
+      preco = 9.50;
+      texto = "R$ 9,50 por unidade";
+    } else {
+      preco = 10.00;
+      texto = "R$ 10,00 por unidade";
+    }
+
+  }
+
+  document.getElementById("precoChaveiro").innerText = texto;
+}
+
+
+function adicionarChaveiro() {
+
+  let select =
+    document.getElementById("chaveiro");
+
+  let quantidade =
+    parseInt(
+      document.getElementById("qtdChaveiro").value
+    ) || 1;
+
+  let tamanhoValor = select.value;
 
   let tamanho =
     select.options[select.selectedIndex].text;
 
-  let preco =
-    parseFloat(select.value);
+  let preco;
+
+  if (tamanhoValor == "32") {
+
+    if (quantidade == 4) {
+      preco = 27.50 / 4;
+    } else if (quantidade > 50) {
+      preco = 6.00;
+    } else if (quantidade > 10) {
+      preco = 6.50;
+    } else {
+      preco = 7.00;
+    }
+
+  } else {
+
+    if (quantidade == 4) {
+      preco = 39.50 / 4;
+    } else if (quantidade > 50) {
+      preco = 9.00;
+    } else if (quantidade > 10) {
+      preco = 9.50;
+    } else {
+      preco = 10.00;
+    }
+
+  }
 
   adicionar(
     "Botton Chaveiro",
@@ -723,9 +825,7 @@ function adicionarChaveiro() {
     preco,
     quantidade
   );
-
 }
-
 
 function adicionar(
   produto,
