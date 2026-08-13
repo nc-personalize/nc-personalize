@@ -204,6 +204,120 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+/* ✨ Detalhes delicados da NC Personalize */
+
+body {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+header {
+  box-shadow: 0 3px 15px rgba(184,111,135,0.06);
+  position: relative;
+}
+
+header::after {
+  content: "♡";
+  position: absolute;
+  right: 25px;
+  top: 18px;
+  color: #d99aaa;
+  font-size: 22px;
+  opacity: 0.7;
+}
+
+.logo {
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(184,111,135,0.12);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "✦";
+  position: absolute;
+  top: 25px;
+  left: 10%;
+  color: #d99aaa;
+  font-size: 22px;
+  opacity: 0.65;
+}
+
+.hero::after {
+  content: "♡";
+  position: absolute;
+  bottom: 25px;
+  right: 10%;
+  color: #d99aaa;
+  font-size: 28px;
+  opacity: 0.55;
+}
+
+.hero h1 {
+  letter-spacing: 0.5px;
+}
+
+.botao {
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+  box-shadow: 0 6px 15px rgba(184,111,135,0.20);
+}
+
+.botao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 20px rgba(184,111,135,0.28);
+}
+
+.produto {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.produto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(100,60,75,0.14);
+}
+
+.produto-imagem {
+  position: relative;
+  overflow: hidden;
+}
+
+.produto-imagem::after {
+  content: "✦";
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  color: #d99aaa;
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #b86f87;
+  box-shadow: 0 0 0 3px rgba(184,111,135,0.10);
+}
+
+@media (max-width: 800px) {
+
+  .produtos {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  section {
+    padding: 40px 16px;
+  }
+
+}
 </style>
 </head>
 
