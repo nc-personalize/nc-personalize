@@ -595,6 +595,23 @@ textarea:focus {
   }
 
 }
+/* 📦 Prazo de envio — NC Personalize */
+
+.prazo-pedido {
+  margin: 18px 0;
+  padding: 15px 18px;
+  background: #fbe7ed;
+  border: 1px solid #efd3dc;
+  border-radius: 15px;
+  text-align: center;
+  color: #684957;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.prazo-pedido strong {
+  color: #b86f87;
+}
 </style>
 </head>
 
@@ -929,11 +946,16 @@ textarea:focus {
       class="total"
       id="total">
       Total: R$ 0,00
-    </div>
+   </div>
 
-    <br>
+<div class="prazo-pedido">
+  📦 <strong>Prazo de envio:</strong><br>
+  Pedidos enviados após 5 dias úteis.
+</div>
 
-    <h3>Dados do pedido</h3>
+<br>
+
+<h3>Dados do pedido</h3>
 
     <input
       type="text"
