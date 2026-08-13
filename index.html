@@ -242,41 +242,70 @@ footer {
 
   <div class="produtos">
 
-    <!-- BOTTON ALFINETE -->
+ <!-- BOTTON ALFINETE -->
 
-    <div class="produto">
+<div class="produto">
 
-      <div class="produto-imagem">
-        📍
-      </div>
+  <div class="produto-imagem">
+    📍
+  </div>
 
-      <h3>Botton Alfinete</h3>
+  <h3>Botton Alfinete</h3>
 
-      <p>
-        Personalizado com sua foto ou arte.
-      </p>
+  <p>
+    Personalizado com sua foto ou arte.
+  </p>
 
-      <select id="alfinete">
-        <option value="4">25mm — R$ 4,00</option>
-        <option value="5">32mm — R$ 5,00</option>
-        <option value="8">58mm — R$ 8,00</option>
-      </select>
+  <select id="alfinete">
 
-      <input
-        type="number"
-        id="qtdAlfinete"
-        value="1"
-        min="1"
-        placeholder="Quantidade"
-      >
+    <option value="25">
+      25mm — R$ 4,00/un.
+    </option>
 
-      <button
-        class="botao"
-        onclick="adicionarAlfinete()">
-        Adicionar ao carrinho
-      </button>
+    <option value="32">
+      32mm — R$ 5,00/un.
+    </option>
 
-    </div>
+    <option value="58">
+      58mm — R$ 8,00/un.
+    </option>
+
+  </select>
+
+  <input
+    type="number"
+    id="qtdAlfinete"
+    value="1"
+    min="1"
+    placeholder="Quantidade"
+    oninput="calcularAlfinete()"
+  >
+
+  <div
+    id="precoAlfinete"
+    class="preco">
+
+    R$ 4,00 por unidade
+
+  </div>
+
+  <p style="font-size:13px; line-height:1.5;">
+
+    Kit com 4 unidades disponível<br>
+    Desconto para pedidos acima de 10 unidades<br>
+    Desconto especial acima de 50 unidades
+
+  </p>
+
+  <button
+    class="botao"
+    onclick="adicionarAlfinete()">
+
+    Adicionar ao carrinho
+
+  </button>
+
+</div>
 
 
     <!-- BOTTON IMÃ -->
@@ -485,6 +514,67 @@ footer {
 let carrinho = [];
 
 
+function calcularAlfinete() {
+
+  let tamanho = document.getElementById("alfinete").value;
+  let quantidade = parseInt(document.getElementById("qtdAlfinete").value) || 1;
+
+  let preco = 0;
+  let texto = "";
+
+  if (tamanho == "25") {
+
+    if (quantidade == 4) {
+      preco = 15.50 / 4;
+      texto = "Kit com 4 unidades — R$ 15,50";
+    } else if (quantidade > 50) {
+      preco = 3.00;
+      texto = "R$ 3,00 por unidade";
+    } else if (quantidade > 10) {
+      preco = 3.50;
+      texto = "R$ 3,50 por unidade";
+    } else {
+      preco = 4.00;
+      texto = "R$ 4,00 por unidade";
+    }
+
+  } else if (tamanho == "32") {
+
+    if (quantidade == 4) {
+      preco = 19.50 / 4;
+      texto = "Kit com 4 unidades — R$ 19,50";
+    } else if (quantidade > 50) {
+      preco = 4.00;
+      texto = "R$ 4,00 por unidade";
+    } else if (quantidade > 10) {
+      preco = 4.50;
+      texto = "R$ 4,50 por unidade";
+    } else {
+      preco = 5.00;
+      texto = "R$ 5,00 por unidade";
+    }
+
+  } else if (tamanho == "58") {
+
+    if (quantidade == 4) {
+      preco = 31.50 / 4;
+      texto = "Kit com 4 unidades — R$ 31,50";
+    } else if (quantidade > 50) {
+      preco = 7.00;
+      texto = "R$ 7,00 por unidade";
+    } else if (quantidade > 10) {
+      preco = 7.50;
+      texto = "R$ 7,50 por unidade";
+    } else {
+      preco = 8.00;
+      texto = "R$ 8,00 por unidade";
+    }
+  }
+
+  document.getElementById("precoAlfinete").innerText = texto;
+}
+
+
 function adicionarAlfinete() {
 
   let select = document.getElementById("alfinete");
@@ -492,13 +582,51 @@ function adicionarAlfinete() {
   let quantidade =
     parseInt(
       document.getElementById("qtdAlfinete").value
-    );
+    ) || 1;
 
   let tamanho =
     select.options[select.selectedIndex].text;
 
-  let preco =
-    parseFloat(select.value);
+  let tamanhoValor = select.value;
+
+  let preco;
+
+  if (tamanhoValor == "25") {
+
+    if (quantidade == 4) {
+      preco = 15.50 / 4;
+    } else if (quantidade > 50) {
+      preco = 3.00;
+    } else if (quantidade > 10) {
+      preco = 3.50;
+    } else {
+      preco = 4.00;
+    }
+
+  } else if (tamanhoValor == "32") {
+
+    if (quantidade == 4) {
+      preco = 19.50 / 4;
+    } else if (quantidade > 50) {
+      preco = 4.00;
+    } else if (quantidade > 10) {
+      preco = 4.50;
+    } else {
+      preco = 5.00;
+    }
+
+  } else {
+
+    if (quantidade == 4) {
+      preco = 31.50 / 4;
+    } else if (quantidade > 50) {
+      preco = 7.00;
+    } else if (quantidade > 10) {
+      preco = 7.50;
+    } else {
+      preco = 8.00;
+    }
+  }
 
   adicionar(
     "Botton Alfinete",
@@ -506,7 +634,6 @@ function adicionarAlfinete() {
     preco,
     quantidade
   );
-
 }
 
 
