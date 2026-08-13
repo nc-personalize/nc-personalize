@@ -865,8 +865,14 @@ function atualizarCarrinho() {
 
   if (carrinho.length === 0) {
 
-    lista.innerHTML =
-      "Seu carrinho está vazio.";
+    lista.innerHTML = `
+      <div class="carrinho-vazio">
+        🛍️<br>
+        <strong>Seu carrinho está vazio.</strong>
+        <br>
+        Escolha seus produtos personalizados 💕
+      </div>
+    `;
 
   } else {
 
@@ -884,19 +890,34 @@ function atualizarCarrinho() {
         <div class="item-carrinho">
 
           <strong>
-            ${item.quantidade}x
             ${item.produto}
           </strong>
 
           <br>
 
-          ${item.tamanho}
+          <span>
+            ${item.tamanho}
+          </span>
 
           <br>
 
-          R$ ${subtotal
+          Quantidade: ${item.quantidade}
+
+          <br>
+
+          Preço unitário:
+          R$ ${item.preco
             .toFixed(2)
             .replace(".", ",")}
+
+          <br>
+
+          <strong>
+            Subtotal:
+            R$ ${subtotal
+              .toFixed(2)
+              .replace(".", ",")}
+          </strong>
 
           <br>
 
@@ -908,9 +929,10 @@ function atualizarCarrinho() {
               background:none;
               color:#b86f87;
               cursor:pointer;
+              text-decoration:underline;
             ">
 
-            Remover
+            Remover item
 
           </button>
 
@@ -923,9 +945,8 @@ function atualizarCarrinho() {
   }
 
   document.getElementById("total").innerText =
-    "Total: R$ " +
+    "Total do pedido: R$ " +
     total.toFixed(2).replace(".", ",");
-
 }
 
 
