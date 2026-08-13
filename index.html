@@ -318,6 +318,53 @@ textarea:focus {
   }
 
 }
+/* 🌸 Cards dos produtos — NC Personalize */
+
+.produto {
+  position: relative;
+  overflow: hidden;
+}
+
+.produto::before {
+  content: "♡";
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-size: 18px;
+  color: #d99aaa;
+  opacity: 0.45;
+}
+
+.produto h3 {
+  color: #684957;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.produto p {
+  color: #80616d;
+}
+
+.produto-imagem {
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.7);
+}
+
+.produto .preco {
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+.produto select,
+.produto input {
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.produto select:hover,
+.produto input:hover {
+  border-color: #d99aaa;
+}
 </style>
 </head>
 
