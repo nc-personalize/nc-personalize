@@ -487,6 +487,64 @@ textarea:focus {
   color: #b86f87;
   font-size: 18px;
 }
+/* 💕 Benefícios — NC Personalize */
+
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.beneficio {
+  background: #fff;
+  border: 1px solid #f0dfe4;
+  border-radius: 22px;
+  padding: 25px 18px;
+  text-align: center;
+  box-shadow: 0 7px 20px rgba(100,60,75,0.08);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.beneficio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(100,60,75,0.13);
+}
+
+.beneficio-icone {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.beneficio h3 {
+  color: #684957;
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.beneficio p {
+  color: #80616d;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+
+  .beneficios {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .beneficios {
+    grid-template-columns: 1fr;
+  }
+
+}
 </style>
 </head>
 
@@ -516,7 +574,58 @@ textarea:focus {
 
 </section>
 
-<section id="produtos">
+<section>
+
+  <div class="titulo">
+
+    <h2>Por que escolher a NC Personalize? ✨</h2>
+
+  </div>
+
+  <div class="beneficios">
+
+    <div class="beneficio">
+      <div class="beneficio-icone">💝</div>
+      <h3>Feito com carinho</h3>
+      <p>
+        Cada pedido é preparado com atenção
+        para deixar seu momento ainda mais especial.
+      </p>
+    </div>
+
+    <div class="beneficio">
+      <div class="beneficio-icone">✨</div>
+      <h3>Personalizado para você</h3>
+      <p>
+        Você escolhe a imagem, o tamanho
+        e a quantidade que deseja.
+      </p>
+    </div>
+
+    <div class="beneficio">
+      <div class="beneficio-icone">📦</div>
+      <h3>Pedido sob medida</h3>
+      <p>
+        Produzimos seus personalizados
+        de acordo com a sua necessidade.
+      </p>
+    </div>
+
+    <div class="beneficio">
+      <div class="beneficio-icone">💕</div>
+      <h3>Momentos especiais</h3>
+      <p>
+        Produtos pensados para presentear,
+        decorar e guardar boas lembranças.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="pedido">
 
   <div class="titulo">
     <h2>Nossos produtos 💕</h2>
