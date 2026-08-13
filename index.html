@@ -308,41 +308,62 @@ footer {
 </div>
 
 
-    <!-- BOTTON IMÃ -->
+   <!-- BOTTON IMÃ -->
 
-    <div class="produto">
+<div class="produto">
 
-      <div class="produto-imagem">
-        🧲
-      </div>
+  <div class="produto-imagem">
+    🧲
+  </div>
 
-      <h3>Botton Imã</h3>
+  <h3>Botton Imã</h3>
 
-      <p>
-        Ideal para lembranças e divulgação.
-      </p>
+  <p>
+    Personalizado com sua foto ou arte.
+  </p>
 
-      <select id="ima">
-        <option value="12">
-          58mm — R$ 12,00
-        </option>
-      </select>
+  <select id="ima">
 
-      <input
-        type="number"
-        id="qtdIma"
-        value="1"
-        min="1"
-        placeholder="Quantidade"
-      >
+    <option value="58">
+      58mm
+    </option>
 
-      <button
-        class="botao"
-        onclick="adicionarIma()">
-        Adicionar ao carrinho
-      </button>
+  </select>
 
-    </div>
+  <input
+    type="number"
+    id="qtdIma"
+    value="1"
+    min="1"
+    placeholder="Quantidade"
+    oninput="calcularIma()"
+  >
+
+  <div
+    id="precoIma"
+    class="preco">
+
+    R$ 12,00 por unidade
+
+  </div>
+
+  <p style="font-size:13px; line-height:1.5;">
+
+    De 1 a 5 unidades — R$ 12,00/un.<br>
+    Acima de 5 unidades — R$ 10,00/un.<br>
+    Acima de 10 unidades — R$ 9,00/un.
+
+  </p>
+
+  <button
+    class="botao"
+    onclick="adicionarIma()">
+
+    Adicionar ao carrinho
+
+  </button>
+
+</div>
 
 
     <!-- BOTTON CHAVEIRO -->
@@ -637,30 +658,49 @@ function adicionarAlfinete() {
 }
 
 
-function adicionarIma() {
-
-  let select = document.getElementById("ima");
+function calcularIma() {
 
   let quantidade =
-    parseInt(
-      document.getElementById("qtdIma").value
-    );
+    parseInt(document.getElementById("qtdIma").value) || 1;
 
-  let tamanho =
-    select.options[select.selectedIndex].text;
+  let preco;
 
-  let preco =
-    parseFloat(select.value);
+  if (quantidade > 10) {
+    preco = 9.00;
+  } else if (quantidade > 5) {
+    preco = 10.00;
+  } else {
+    preco = 12.00;
+  }
+
+  document.getElementById("precoIma").innerText =
+    "R$ " + preco.toFixed(2).replace(".", ",") +
+    " por unidade";
+}
+
+
+function adicionarIma() {
+
+  let quantidade =
+    parseInt(document.getElementById("qtdIma").value) || 1;
+
+  let preco;
+
+  if (quantidade > 10) {
+    preco = 9.00;
+  } else if (quantidade > 5) {
+    preco = 10.00;
+  } else {
+    preco = 12.00;
+  }
 
   adicionar(
     "Botton Imã",
-    tamanho,
+    "58mm",
     preco,
     quantidade
   );
-
 }
-
 
 function adicionarChaveiro() {
 
