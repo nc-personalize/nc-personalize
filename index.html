@@ -545,6 +545,56 @@ textarea:focus {
   }
 
 }
+/* 💳 Formas de pagamento — NC Personalize */
+
+.pagamentos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 750px;
+  margin: auto;
+}
+
+.pagamento {
+  background: #fff;
+  border: 1px solid #f0dfe4;
+  border-radius: 22px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 7px 20px rgba(100,60,75,0.08);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.pagamento:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(100,60,75,0.13);
+}
+
+.pagamento-icone {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.pagamento h3 {
+  color: #684957;
+  margin: 8px 0 10px;
+}
+
+.pagamento p {
+  color: #80616d;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+
+  .pagamentos {
+    grid-template-columns: 1fr;
+  }
+
+}
 </style>
 </head>
 
@@ -926,6 +976,51 @@ textarea:focus {
       Finalizar pedido
 
     </button>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="titulo">
+
+    <h2>Formas de pagamento 💕</h2>
+
+  </div>
+
+  <div class="pagamentos">
+
+    <div class="pagamento">
+
+      <div class="pagamento-icone">
+        💳
+      </div>
+
+      <h3>Cartão de crédito</h3>
+
+      <p>
+        Consulte as condições de pagamento
+        no momento da confirmação do pedido.
+      </p>
+
+    </div>
+
+    <div class="pagamento">
+
+      <div class="pagamento-icone">
+        💗
+      </div>
+
+      <h3>Pix</h3>
+
+      <p>
+        A chave Pix e as instruções para pagamento
+        serão informadas na confirmação do pedido.
+      </p>
+
+    </div>
 
   </div>
 
