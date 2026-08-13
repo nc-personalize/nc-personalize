@@ -365,6 +365,92 @@ textarea:focus {
 .produto input:hover {
   border-color: #d99aaa;
 }
+/* 🌸 Hero delicado — NC Personalize */
+
+.hero {
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 70%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+    linear-gradient(135deg, #fffaf7, #fbe5ec);
+}
+
+.hero::before {
+  content: "♡";
+  position: absolute;
+  top: 45px;
+  left: 8%;
+  font-size: 45px;
+  color: #d99aaa;
+  opacity: 0.25;
+}
+
+.hero::after {
+  content: "✦";
+  position: absolute;
+  bottom: 45px;
+  right: 8%;
+  font-size: 35px;
+  color: #d99aaa;
+  opacity: 0.35;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.15;
+  margin-bottom: 18px;
+  text-shadow: 0 3px 12px rgba(104,73,87,0.08);
+}
+
+.hero p {
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+  max-width: 650px;
+  line-height: 1.7;
+}
+
+.hero .botao {
+  position: relative;
+  z-index: 1;
+  padding: 15px 34px;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 390px;
+    padding: 45px 18px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero::before {
+    left: 4%;
+    font-size: 32px;
+  }
+
+  .hero::after {
+    right: 4%;
+    font-size: 28px;
+  }
+
+}
 </style>
 </head>
 
